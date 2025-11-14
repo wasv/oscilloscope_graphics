@@ -10,7 +10,7 @@
         flake-utils.lib.eachDefaultSystem (system: let
             pkgs = nixpkgs.legacyPackages.${system};
             cargo_manifest = builtins.fromTOML (builtins.readFile ./Cargo.toml);
-        in {
+        in rec {
             defaultPackage = pkgs.rustPlatform.buildRustPackage {
                 pname = cargo_manifest.package.name;
                 version = cargo_manifest.package.version;
@@ -21,11 +21,26 @@
                 ];
                 nativeBuildInputs = with pkgs; [
                     pkg-config
-                    # Development only
-                    # TODO: find a better place to put these
+                ];
+            };
+            devShell = pkgs.mkShell {
+                inputsFrom = [ defaultPackage ];
+
+                packages = with pkgs; [
+                    rust-analyzer
                     clippy
                     rustfmt
+
+                    gdb
+
+                    cargo-feature
+                    cargo-outdated
+                    cargo-audit
                 ];
+
+                RUST_SRC_PATH = "${pkgs.rustPlatform.rustcSrc}/library";
+                RUST_BACKTRACE = 1;
+                CARGO_REGISTRIES_CRATES_IO_PROTOCOL = "sparse";
             };
         });
 }
