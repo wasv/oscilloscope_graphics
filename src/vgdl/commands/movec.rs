@@ -1,7 +1,6 @@
+use crate::prelude::*;
 use crate::vgdl::{Command, CommandObj, Lines, State};
 use anyhow::{Context, Result, anyhow};
-use std::collections::VecDeque;
-use std::str::FromStr;
 
 #[derive(Clone)]
 pub struct Move;

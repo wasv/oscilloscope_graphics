@@ -1,6 +1,10 @@
+extern crate std;
+
+use crate::prelude::*;
+
 use crate::vgdl::{Command, CommandObj, Lines, State};
 use anyhow::{Context, Result, anyhow};
-use std::collections::VecDeque;
+
 use std::fs;
 use std::path::Path;
 

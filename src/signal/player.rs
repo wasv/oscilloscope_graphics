@@ -1,6 +1,10 @@
+extern crate std;
+
+use crate::prelude::*;
 use crate::signal::{SAMPLE_RATE, Signal, waveforms::Silence};
 use anyhow::{Result, anyhow};
 use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
+use std::eprintln;
 use std::sync::mpsc;
 
 /// Signal output thread

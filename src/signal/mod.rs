@@ -1,6 +1,7 @@
-pub use std::f32::consts::PI;
+pub use core::f32::consts::PI;
 
 /// Signal output
+#[cfg(feature = "std")]
 pub mod player;
 
 /// Basic waveforms

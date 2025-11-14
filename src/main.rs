@@ -1,3 +1,9 @@
+#![allow(
+    clippy::std_instead_of_alloc,
+    clippy::alloc_instead_of_core,
+    clippy::std_instead_of_core
+)]
+
 use anyhow::Result;
 use oscilloscope_graphics::linedraw::Drawer;
 use oscilloscope_graphics::signal::player::Player;

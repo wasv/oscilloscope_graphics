@@ -1,3 +1,4 @@
+use crate::prelude::*;
 use crate::signal::{SAMPLE_RATE, Signal};
 
 /// Pure square wave

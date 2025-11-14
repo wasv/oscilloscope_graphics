@@ -6,4 +6,21 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0"
-cpal = "0.16"
+cpal = { version = "0.16", optional = true }
+
+[features]
+default = [ "std" ]
+std = [ "cpal" ]
+
+[[bin]]
+name = "oscilloscope_graphics"
+required-features = [ "std" ]
+
+[lints.clippy]
+# These lints are very helpful when working on a library with `no_std` support.
+# They will warn you if you import from `std` when you could've imported from `core` or `alloc`
+# instead.
+# Since `core` and `alloc` are available on any target that has `std`, there is no downside to this.
+std_instead_of_core = "warn"
+std_instead_of_alloc = "warn"
+alloc_instead_of_core = "warn"

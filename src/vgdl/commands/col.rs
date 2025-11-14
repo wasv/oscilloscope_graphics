@@ -1,6 +1,6 @@
+use crate::prelude::*;
 use crate::vgdl::{Command, CommandObj, Lines, State};
 use anyhow::Result;
-use std::collections::VecDeque;
 
 #[derive(Clone)]
 pub struct Col;
