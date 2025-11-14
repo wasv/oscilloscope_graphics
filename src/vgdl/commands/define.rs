@@ -25,6 +25,7 @@ pub struct Binding {
 
 impl Binding {
     pub fn new(value: Lines) -> Command {
+    pub fn new(value: Lines) -> Box<Self> {
         Box::new(Self { value })
     }
 }
