@@ -5,6 +5,7 @@ use std::sync::mpsc;
 
 /// Signal output thread
 pub struct Player {
+    #[allow(dead_code)]
     stream: cpal::Stream,
     comm: mpsc::Sender<Box<dyn Signal>>,
 }
