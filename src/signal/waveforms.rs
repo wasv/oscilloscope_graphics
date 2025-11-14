@@ -1,3 +1,5 @@
+use alloc::boxed::Box;
+
 use crate::signal::{SAMPLE_RATE, Signal};
 
 /// Pure square wave

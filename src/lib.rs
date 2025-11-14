@@ -1,3 +1,6 @@
+#![no_std]
+pub extern crate alloc;
+
 /// Abstract signals and output
 pub mod signal;
 

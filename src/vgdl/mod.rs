@@ -1,9 +1,15 @@
+use alloc::borrow::ToOwned;
+use alloc::boxed::Box;
+use alloc::collections::{BTreeMap, VecDeque};
+use alloc::format;
+use alloc::string::String;
+use alloc::vec::Vec;
+
 use anyhow::{Context, Result, anyhow, bail};
-use std::collections::{HashMap, VecDeque};
 
 /// The high-level state of a VGDL environment
 pub struct State {
-    env: HashMap<String, Command>,
+    env: BTreeMap<String, Command>,
 }
 
 /// A VGDL command
@@ -20,16 +26,25 @@ pub type Lines = Vec<Vec<(f32, f32)>>;
 /// Built-in commands
 mod commands;
 
+impl Default for State {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl State {
     pub fn new() -> Self {
-        let mut env: HashMap<String, Command> = HashMap::new();
+        let mut env: BTreeMap<String, Command> = BTreeMap::new();
         env.insert("draw".to_owned(), Box::new(commands::draw::Draw));
         env.insert("define".to_owned(), Box::new(commands::define::Define));
         env.insert(
             "sequence".to_owned(),
             Box::new(commands::sequence::Sequence),
         );
+
+        #[cfg(feature = "std")]
         env.insert("load".to_owned(), Box::new(commands::load::Load));
+
         env.insert("scale".to_owned(), Box::new(commands::scale::Scale));
         env.insert("move".to_owned(), Box::new(commands::movec::Move));
         env.insert("row".to_owned(), Box::new(commands::row::Row));

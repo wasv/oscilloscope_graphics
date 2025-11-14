@@ -1,6 +1,10 @@
 use crate::vgdl::{Command, CommandObj, Lines, State};
+
+use alloc::boxed::Box;
+use alloc::collections::VecDeque;
+use alloc::vec::Vec;
+
 use anyhow::Result;
-use std::collections::VecDeque;
 
 #[derive(Clone)]
 pub struct Col;

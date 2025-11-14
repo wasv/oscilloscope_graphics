@@ -1,7 +1,12 @@
 use crate::vgdl::{Command, CommandObj, Lines, State};
+
+use core::str::FromStr;
+
+use alloc::boxed::Box;
+use alloc::collections::VecDeque;
+use alloc::vec::Vec;
+
 use anyhow::{Context, Result, anyhow, bail};
-use std::collections::VecDeque;
-use std::str::FromStr;
 
 #[derive(Clone)]
 pub struct Draw;

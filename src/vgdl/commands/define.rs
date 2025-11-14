@@ -1,6 +1,11 @@
 use crate::vgdl::{Command, CommandObj, Lines, State};
+
+use alloc::boxed::Box;
+use alloc::collections::VecDeque;
+use alloc::string::ToString;
+use alloc::vec::Vec;
+
 use anyhow::{Result, anyhow};
-use std::collections::VecDeque;
 
 #[derive(Clone)]
 pub struct Define;
@@ -24,7 +29,6 @@ pub struct Binding {
 }
 
 impl Binding {
-    pub fn new(value: Lines) -> Command {
     pub fn new(value: Lines) -> Box<Self> {
         Box::new(Self { value })
     }

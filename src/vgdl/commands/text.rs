@@ -1,6 +1,11 @@
 use crate::vgdl::{Command, CommandObj, Lines, State};
+
+use alloc::boxed::Box;
+use alloc::collections::VecDeque;
+use alloc::string::ToString;
+use alloc::vec::Vec;
+
 use anyhow::{Result, anyhow};
-use std::collections::VecDeque;
 
 #[derive(Clone)]
 pub struct Text;

@@ -1,5 +1,8 @@
 use crate::signal::Signal;
 
+use alloc::boxed::Box;
+use alloc::vec::Vec;
+
 /// Line-drawing signal
 pub struct Drawer {
     lines: Vec<Vec<(f32, f32)>>,

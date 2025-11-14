@@ -1,6 +1,15 @@
+extern crate std;
+
 use crate::vgdl::{Command, CommandObj, Lines, State};
+
+use alloc::boxed::Box;
+use alloc::collections::VecDeque;
+use alloc::vec::Vec;
+
 use anyhow::{Context, Result, anyhow};
-use std::collections::VecDeque;
+
+use alloc::format;
+
 use std::fs;
 use std::path::Path;
 
